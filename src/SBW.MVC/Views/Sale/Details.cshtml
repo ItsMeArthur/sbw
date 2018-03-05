@@ -1,0 +1,98 @@
+﻿@model Sale
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-controller="Sale" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary pull-right">Update</a>
+        </div>
+    </div>
+
+    <div>
+        <h2>Sale</h2>
+        <table class="table table-responsive">
+
+            <tr>
+                <td align="right">Sale Id</td>
+                <td>
+                    <input type="text" class="form-control" value="@Model.Id" disabled />
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Customer</td>
+                <td>
+                    <input type="text" class="form-control" value="@Model.Customer.Name" disabled />
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Description</td>
+                <td>
+                    <textarea id="description" class="form-control" disabled>@Model.Description</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Date</td>
+                <td>
+                    <input type="text" class="form-control" value="@Model.Date" disabled />
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Status</td>
+                <td>
+                    <input type="text" class="form-control" value="@(Model.IsActive ? "Active" : "Inactive")" disabled />
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Closed</td>
+                <td>
+                    <input type="text" class="form-control" value="@(Model.IsClosed ? "Yes" : "No")" disabled />
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div>
+        <h2>
+            Sale Items
+        </h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Id</td>
+                <td>Description</td>
+                <td>Brand</td>
+                <td>Quantity</td>
+                <td>Price</td>
+            </tr>
+            
+                @foreach (var saleItem in Model.SaleItems)
+                {
+                    <tr>
+                        <td>@saleItem.Id</td>
+                        <td>@saleItem.Product.Description</td>
+                        <td>@saleItem.Product.Brand</td>
+                        <td>@saleItem.Quantity</td>
+                        <td>@saleItem.Price</td>
+                    </tr>
+                }
+        </table>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-controller="SaleItem" asp-action="AddItem" asp-route-saleId="@Model.Id" class="btn btn-success pull-right">Add Item</a>
+        </div>
+    </div>
+
+</div>

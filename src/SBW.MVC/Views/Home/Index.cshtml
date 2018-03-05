@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a asp-controller="Customer" asp-action="Index"><img src="~/images/customer_icon_small.png" alt="Customers"></a>
+            <div class="caption">
+                <h3 class="text-center"> <a asp-controller="Customer" asp-action="Index">Customers</a></h3>
+                <div class="text-right">
+                    <a asp-controller="Customer" asp-action="Index" class="btn btn-default">View</a>
+                    <a asp-controller="Customer" asp-action="Create" class="btn btn-primary">New Customer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a asp-controller="Sale" asp-action="Index"><img src="~/images/sale_icon_small.png" alt="Sales"></a>
+            <div class="caption">
+                <h3 class="text-center"> <a asp-controller="Sale" asp-action="Index">Sales</a></h3>
+                <div class="text-right">
+                    <a asp-controller="Sale" asp-action="Index" class="btn btn-default">View</a>
+                    <a asp-controller="Sale" asp-action="Create" class="btn btn-primary">New Sale</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a asp-controller="Product" asp-action="Index"><img src="~/images/product_icon_small.png" alt="Products"></a>
+            <div class="caption">
+                <h3 class="text-center"> <a asp-controller="Product" asp-action="Index">Products</a></h3>
+                <div  class="text-right">
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-default">View</a>
+                    <a asp-controller="Product" asp-action="Create" class="btn btn-primary">New Product</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

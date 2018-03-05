@@ -1,0 +1,77 @@
+﻿@model List<Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="row">
+    <div>
+        <form>
+            <div class="col-md-2 col-sm-4">
+                <input type="text" name="Name" class="form-control" placeholder="Search by name" required>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <input type="submit" class="btn btn-default pull-left" value="Search" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8 col-sm-4">
+        <a asp-controller="Customer" asp-action="Create" class="btn btn-primary pull-right">Add Customer</a>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">City</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.City</td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-controller="Customer" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="badge" id="customer-count">0</span><span> active customers.</span>
+    </div>
+</div>
+
+<script>
+    function updateActiveCustomersCount() {
+        $.ajax({
+        url: "@Url.Action("ActiveCustomersCount", "Customer")",
+        type: 'GET',
+        dataType: 'text',
+        success: function (result) {
+            $('#customer-count').text(result);
+        }
+        });
+    };
+
+    $(document).ready(function () {
+        updateActiveCustomersCount();
+        window.setInterval("updateActiveCustomersCount()", 60000);
+    });
+</script>

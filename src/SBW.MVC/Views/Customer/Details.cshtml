@@ -1,0 +1,56 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <a asp-controller="Customer" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary pull-right">Update</a>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Id</td>
+                <td>@Model.Id</td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td>@Model.Name</td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>@Model.Email</td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td>@Model.City</td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>@Model.Address</td>
+            </tr>
+
+            <tr>
+                <td>Status</td>
+                <td>@(Model.IsActive ? "Active" : "Inactive")</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+

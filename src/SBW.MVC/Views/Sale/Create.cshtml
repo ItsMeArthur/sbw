@@ -1,0 +1,58 @@
+﻿@model SaleViewModel
+
+@{
+    ViewData["Title"] = "Add Sale";
+}
+
+<form asp-action="Create" method="post" class="form-horizontal" role="form">
+
+    <div class="form-group">
+        <label asp-for="Sale.CustomerId" class="col-md-2 control-label">Customer</label>
+        <div class="col-md-5">
+            @Html.DropDownListFor(m => m.Sale.CustomerId, Model.CustomerNamesListItem.OrderBy(c => c.Text), new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Sale.Description" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Sale.Description" class="form-control"/>
+            <span asp-validation-for="Sale.Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Sale.Date" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input type="text" asp-for="Sale.Date" class="form-control datepicker" required/>
+            <span asp-validation-for="Sale.Date" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" asp-for="Sale.IsActive" checked> Is Active
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" asp-for="Sale.IsClosed" checked> Is Closed
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset col-md-7">
+            <input type="submit" class="btn btn-primary pull-right" value="Save" />
+        </div>
+    </div>
+
+</form>
